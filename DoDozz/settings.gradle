@@ -1,0 +1,2 @@
+rootProject.name='DoDozz'
+include ':app'
