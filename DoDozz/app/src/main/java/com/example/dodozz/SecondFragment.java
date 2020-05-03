@@ -190,7 +190,10 @@ public class SecondFragment extends Fragment {
                     Toast.makeText(getContext(), "Please enter title", Toast.LENGTH_SHORT).show();
                 }
                 else {
-                    TodoList newTodoList = new TodoList(binding.taskTitle.getText().toString(), taskListItems);
+                    ObservableArrayList<TaskListItem> totalTaskListItems = new ObservableArrayList<>();
+                    totalTaskListItems.addAll(taskListItems);
+                    totalTaskListItems.addAll(completedTaskListItems);
+                    TodoList newTodoList = new TodoList(binding.taskTitle.getText().toString(), totalTaskListItems);
                     ObservableArrayList<TodoList> mainTodoList = StorageHelper.getTodoList(getActivity());
                     if (finalId != 0) {
                         Log.d(TAG, "onClick: storage" + mainTodoList.toString());
